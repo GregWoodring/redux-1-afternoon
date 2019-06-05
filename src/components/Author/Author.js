@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './Author.css';
+import store, { UPDATE_AUTHOR_FNAME, UPDATE_AUTHOR_LNAME } from '../../store'
 
 class Author extends Component {
   constructor(props) {
     super(props);
+    const reduxState = store.getState();
     this.state = {
-      authorFirst: '',
-      authorLast: ''
+      authorFirst: reduxState.authorsFName,
+      authorLast: reduxState.authorsLName
     };
   }
 
@@ -23,7 +25,14 @@ class Author extends Component {
     });
   }
   saveChanges() {
-    // Send data to Redux state
+    store.dispatch({
+      type: UPDATE_AUTHOR_FNAME,
+      payload: this.state.authorFirst
+    })
+    store.dispatch({
+      type: UPDATE_AUTHOR_LNAME,
+      payload: this.state.authorsLName
+    })
   }
   render() {
     return (

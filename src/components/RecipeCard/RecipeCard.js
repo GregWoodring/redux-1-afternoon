@@ -1,6 +1,7 @@
 import React from "react";
 import "./RecipeCard.css";
 
+
 let RecipeCard = props => {
   const {
     name,
@@ -16,6 +17,11 @@ let RecipeCard = props => {
   const instructionsDisplay = instructions.map((instruction, i) => {
     return <li key={i}>{instruction}</li>;
   });
+
+  
+  
+  
+
   return (
     <div className="RecipeCard">
       <div className="title_container">
@@ -40,6 +46,7 @@ let RecipeCard = props => {
         viewBox="0 0 60 60"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        onClick={() => props.delete()}
       >
         <path
           d="M2.35352 57.3536L57.3535 3.3409M2.35352 2.64648L57.3535 56.6592"
